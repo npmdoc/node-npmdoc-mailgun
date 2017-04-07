@@ -1,0 +1,555 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="http://github.com/shz/node-mailgun">mailgun (v0.5.0)</a>
+</h1>
+<h4>Mailgun for Node.js</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mailgun">module mailgun</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mailgun.Mailgun">
+            function <span class="apidocSignatureSpan">mailgun.</span>Mailgun
+            <span class="apidocSignatureSpan">(apiKey)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mailgun.</span>Mailgun.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mailgun.</span>CAMPAIGN_ID</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mailgun.</span>MAILGUN_TAG</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mailgun.Mailgun">module mailgun.Mailgun</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mailgun.Mailgun.Mailgun">
+            function <span class="apidocSignatureSpan">mailgun.</span>Mailgun
+            <span class="apidocSignatureSpan">(apiKey)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.mailgun.Mailgun.prototype">module mailgun.Mailgun.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mailgun.Mailgun.prototype._createHttpOptions">
+            function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>_createHttpOptions
+            <span class="apidocSignatureSpan">(resource, method, servername)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mailgun.Mailgun.prototype.createRoute">
+            function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>createRoute
+            <span class="apidocSignatureSpan">(pattern, destination, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mailgun.Mailgun.prototype.deleteRoute">
+            function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>deleteRoute
+            <span class="apidocSignatureSpan">(id, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mailgun.Mailgun.prototype.getRoutes">
+            function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>getRoutes
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mailgun.Mailgun.prototype.sendRaw">
+            function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>sendRaw
+            <span class="apidocSignatureSpan">(sender, recipients, rawBody)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mailgun.Mailgun.prototype.sendText">
+            function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>sendText
+            <span class="apidocSignatureSpan">(sender, recipients, subject, text)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mailgun" id="apidoc.module.mailgun">module mailgun</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mailgun.Mailgun" id="apidoc.element.mailgun.Mailgun">
+        function <span class="apidocSignatureSpan">mailgun.</span>Mailgun
+        <span class="apidocSignatureSpan">(apiKey)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Mailgun = function (apiKey) {
+
+  // Authentication uses the api key in base64 form, so we cache that
+  // here.
+  this._apiKey64 = new Buffer('api:' + apiKey).toString('base64');
+
+  this._apiKey = apiKey;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mailgun.Mailgun" id="apidoc.module.mailgun.Mailgun">module mailgun.Mailgun</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mailgun.Mailgun.Mailgun" id="apidoc.element.mailgun.Mailgun.Mailgun">
+        function <span class="apidocSignatureSpan">mailgun.</span>Mailgun
+        <span class="apidocSignatureSpan">(apiKey)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Mailgun = function (apiKey) {
+
+  // Authentication uses the api key in base64 form, so we cache that
+  // here.
+  this._apiKey64 = new Buffer('api:' + apiKey).toString('base64');
+
+  this._apiKey = apiKey;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mailgun.Mailgun.prototype" id="apidoc.module.mailgun.Mailgun.prototype">module mailgun.Mailgun.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mailgun.Mailgun.prototype._createHttpOptions" id="apidoc.element.mailgun.Mailgun.prototype._createHttpOptions">
+        function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>_createHttpOptions
+        <span class="apidocSignatureSpan">(resource, method, servername)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_createHttpOptions = function (resource, method, servername) {
+  return {
+    host: 'api.mailgun.net',
+    port: 443,
+    method: method,
+    path: '/api/' + resource + (servername ? '?servername=' + servername : ''),
+
+    headers: {
+      'Authorization': 'Basic ' + this._apiKey64
+    }
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mailgun.Mailgun.prototype.createRoute" id="apidoc.element.mailgun.Mailgun.prototype.createRoute">
+        function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>createRoute
+        <span class="apidocSignatureSpan">(pattern, destination, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createRoute = function (pattern, destination, callback) {
+
+  // Prep the request.
+  var httpOptions = this._createHttpOptions('routes.xml', 'POST');
+
+  // Create the HTTP POST data.
+  var data = '' +
+  '&lt;route&gt;' +
+    '&lt;pattern&gt;' + pattern + '&lt;/pattern&gt;' +
+    '&lt;destination&gt;' + destination + '&lt;/destination&gt;' +
+  '&lt;/route&gt;';
+
+  // Prep the request.
+  var httpOptions = this._createHttpOptions('routes.xml', 'POST');
+  httpOptions.headers['Content-Type'] = 'text/xml';
+  httpOptions.headers['Content-Length'] = Buffer.byteLength(data);
+
+  // Fire it.
+  https.request(httpOptions, function(res) {
+
+    // Collect the data
+    var data = '';
+    res.on('data', function(c) { data += c });
+    res.on('close', function(err) { callback(err) });
+    res.on('end', function() { finish() });
+
+    // Handle the results
+    var finish = function() {
+
+      if (res.statusCode == 201) {
+        var id = xre('id').exec(data)[1];
+
+        callback &amp;&amp; callback(undefined, id);
+      } else {
+        var message = xre('message').exec(data);
+        callback &amp;&amp; callback(new Error(message ? message[1] : data));
+      }
+    };
+  }).end(data);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mailgun.Mailgun.prototype.deleteRoute" id="apidoc.element.mailgun.Mailgun.prototype.deleteRoute">
+        function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>deleteRoute
+        <span class="apidocSignatureSpan">(id, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">deleteRoute = function (id, callback) {
+
+  // Prep the request
+  var httpOptions = this._createHttpOptions('routes/' + id + '.xml', 'DELETE');
+  httpOptions.headers['Content-Type'] = 'text/xml';
+  httpOptions.headers['Content-Length'] = 0;
+
+  // Fire it.
+  https.request(httpOptions, function(res) {
+
+    if (res.statusCode == 200) {
+      callback &amp;&amp; callback(undefined);
+    } else {
+      var data = '';
+      res.on('data', function(c) { data += c });
+      res.on('close', function(err) { callback(err) });
+      res.on('end', function() {
+        var message = xre('message').exec(data);
+        callback &amp;&amp; callback(new Error(message ? message[1] : data))
+      });
+    }
+  }).end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mailgun.Mailgun.prototype.getRoutes" id="apidoc.element.mailgun.Mailgun.prototype.getRoutes">
+        function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>getRoutes
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getRoutes = function (callback) {
+
+  // Some sanity checking.  It makes no sense to call this without a
+  // callback.
+  if (typeof callback != 'function') throw new Error('Callback must be a function');
+
+  // Prep the request.
+  var httpOptions = this._createHttpOptions('routes.xml', 'GET');
+
+  // Fire it.
+  https.request(httpOptions, function(res) {
+
+    // Check for failure
+    if (res.statusCode != 200)
+      return callback(res.statusCode);
+
+    // We're going to be a little lazy and just eat up all the data
+    // before parsing it.
+    var data = '';
+    res.on('data', function(c) {
+      data += c;
+    });
+
+    // Handle catastrophic failures with an error
+    res.on('close', function(err) {
+      // FIXME - In some cases this could cause the callback to be called
+      //         with an error, even after we called it successfully.
+      callback(err.code);
+    });
+
+    // Once the request is done, we have all the data and can parse it.
+    res.on('end', function() {
+
+      // Silly XML parsing because I don't want to include another
+      // dependency.  Fortunately the structure is very simple and
+      // convenient to parse with this method.
+      var routes = data.replace(/\s/g, '').match(xre('route'));
+      var nroutes = [];
+      for (var i=0; i&lt;routes.length; i++) {
+
+        // Pull the route out, since we're going to change it.
+        var route = routes[i];
+
+        // Pull the data.
+        var r = {};
+        r.pattern = xre('pattern').exec(route)[1];
+        r.destination = xre('destination').exec(route)[1];
+        r.id = xre('id').exec(route)[1];
+        nroutes.push(r);
+      }
+
+      // Send the data to the callback.
+      callback(undefined, nroutes);
+
+    });
+  }).end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mailgun.Mailgun.prototype.sendRaw" id="apidoc.element.mailgun.Mailgun.prototype.sendRaw">
+        function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>sendRaw
+        <span class="apidocSignatureSpan">(sender, recipients, rawBody)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sendRaw = function (sender, recipients, rawBody) {
+
+  // These are flexible arguments, so we define them here to make
+  // sure they're in scope.
+  var servername = '';
+  var callback = null;
+
+  // Less than 3 arguments means we're missing something that prevents
+  // us from even sending an email, so we fail.
+  if (arguments.length &lt; 3)
+    throw new Error('Missing required argument');
+
+  // Flexible argument magic!
+  var args = Array.prototype.slice.call(arguments, 3);
+  // Pluck servername.
+  if (args.length &amp;&amp; typeof args[0] == 'string')
+    servername = args.shift() || servername;
+  // Pluck callback.
+  if (args.length &amp;&amp; typeof args[0] == 'function')
+    callback = args.shift() || callback;
+  // Don't be messy.
+  delete args;
+
+  // We allow recipients to be passed as either a string or an array,
+  // but normalize to to an array for consistency later in the
+  // function.
+  if (typeof(recipients) == 'string')
+      recipients = [recipients];
+
+  // Mailgun wants its messages formatted in a special way.  Why?
+  // Who knows.
+  var message = sender +
+                '\n' + recipients.join(', ') +
+                '\n\n' + rawBody;
+
+  // Prepare the APi request.
+  var httpOptions = this._createHttpOptions('messages.eml', 'POST', servername);
+  httpOptions.headers['Content-Type'] = 'text/plain; charset=utf-8';
+  httpOptions.headers['Content-Length'] = Buffer.byteLength(message);
+
+  // Fire it.
+  var req = https.request(httpOptions, function(res) {
+
+    // If the user supplied a callback, fire it and set `err` to the
+    // status code of the request if it wasn't successful.
+    if (callback) callback(res.statusCode != 201 ? new Error(res.statusCode) : undefined);
+  });
+
+  // Wrap up the request by sending the message, which contains the
+  // actual email data we want to send.
+  req.end(message);
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.mailgun.Mailgun.prototype.sendText" id="apidoc.element.mailgun.Mailgun.prototype.sendText">
+        function <span class="apidocSignatureSpan">mailgun.Mailgun.prototype.</span>sendText
+        <span class="apidocSignatureSpan">(sender, recipients, subject, text)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sendText = function (sender, recipients, subject, text) {
+
+  // These are flexible arguments, so we define them here to make
+  // sure they're in scope.
+  var servername = '';
+  var options = {};
+  var callback = null;
+
+  // Less than 4 arguments means we're missing something that prevents
+  // us from even sending an email, so we fail.
+  if (arguments.length &lt; 4)
+    throw new Error('Missing required argument');
+
+  // Flexible argument magic
+  var args = Array.prototype.slice.call(arguments, 4);
+  if (args.length &amp;&amp; typeof args[0] == 'string')
+    servername = args.shift() || servername;
+  if (args.length &amp;&amp; typeof args[0] == 'object')
+    options = args.shift() || options;
+  if (args.length &amp;&amp; typeof args[0] == 'function')
+    callback = args.shift() || callback;
+
+  // We allow recipients to be passed as either a string or an array,
+  // but normalize to to an array for consistency later in the
+  // function.
+  if (typeof(recipients) == 'string')
+      recipients = [recipients];
+
+  // Build the HTTP POST body text.
+  var body = querystring.stringify({
+    sender: sender,
+    recipients: recipients.join(', '),
+    subject: subject,
+    body: text
+  });
+  if(options &amp;&amp; options !== {})
+    body.options = JSON.stringify(options);
+
+  // Prepare our API request.
+  var httpOptions = this._createHttpOptions('messages.txt', 'POST', servername);
+  httpOptions.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+  httpOptions.headers['Content-Length'] = Buffer.byteLength(body);
+
+  // Fire the request to Mailgun's API.
+  var req = https.request(httpOptions, function(res) {
+
+    // If the user supplied a callback, fire it and set `err` to the
+    // status code of the request if it wasn't successful.
+    if (callback) callback(res.statusCode != 201 ? new Error(res.statusCode) : undefined);
+  });
+
+  // Wrap up the request by sending the body, which contains the
+  // actual email data we want to send.
+  req.end(body);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Example
+
+Here's a complete sending example.
+
+var Mailgun = require('mailgun').Mailgun;
+
+var mg = new Mailgun('some-api-key');
+mg.<span class="apidocCodeKeywordSpan">sendText</span>('example@example.com', ['Recipient 1 &lt;rec1@example.com
+&gt;', 'rec2@example.com'],
+  'This is the subject',
+  'This is the text',
+  'noreply@example.com', {},
+  function(err) {
+    if (err) console.log('Oh noes: ' + err);
+    else     console.log('Success');
+});
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
