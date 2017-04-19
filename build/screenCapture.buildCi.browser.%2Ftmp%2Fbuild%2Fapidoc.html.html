@@ -65,6 +65,12 @@
 
         <li>
 
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan"></span>mailgun</span>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mailgun.</span>Mailgun.prototype</span>
 
         </li>
@@ -154,6 +160,31 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.mailgun.mailgun">module mailgun.mailgun</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mailgun.mailgun.Mailgun">
+            function <span class="apidocSignatureSpan">mailgun.mailgun.</span>Mailgun
+            <span class="apidocSignatureSpan">(apiKey)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mailgun.mailgun.</span>CAMPAIGN_ID</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mailgun.mailgun.</span>MAILGUN_TAG</span>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -177,6 +208,8 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
+
+
 
 
 
@@ -235,7 +268,24 @@
     }
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+subject: subject,
+body: text
+  });
+  if(options &amp;&amp; options !== {})
+body.options = JSON.stringify(options);
+
+  // Prepare our API request.
+  var httpOptions = this.<span class="apidocCodeKeywordSpan">_createHttpOptions</span>('messages.txt', 'POST'
+;, servername);
+  httpOptions.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+  httpOptions.headers['Content-Length'] = Buffer.byteLength(body);
+
+  // Fire the request to Mailgun's API.
+  var req = https.request(httpOptions, function(res) {
+
+// If the user supplied a callback, fire it and set `err` to the
+...</pre></li>
     </ul>
 
 
@@ -542,6 +592,35 @@ mg.<span class="apidocCodeKeywordSpan">sendText</span>('example@example.com', ['
 });
 ...</pre></li>
     </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mailgun.mailgun" id="apidoc.module.mailgun.mailgun">module mailgun.mailgun</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mailgun.mailgun.Mailgun" id="apidoc.element.mailgun.mailgun.Mailgun">
+        function <span class="apidocSignatureSpan">mailgun.mailgun.</span>Mailgun
+        <span class="apidocSignatureSpan">(apiKey)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Mailgun = function (apiKey) {
+
+  // Authentication uses the api key in base64 form, so we cache that
+  // here.
+  this._apiKey64 = new Buffer('api:' + apiKey).toString('base64');
+
+  this._apiKey = apiKey;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
 
 
 </div>

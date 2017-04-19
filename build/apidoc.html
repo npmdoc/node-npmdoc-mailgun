@@ -72,6 +72,12 @@
 
         <li>
 
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan"></span>mailgun</span>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">mailgun.</span>Mailgun.prototype</span>
 
         </li>
@@ -161,6 +167,31 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.mailgun.mailgun">module mailgun.mailgun</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.mailgun.mailgun.Mailgun">
+            function <span class="apidocSignatureSpan">mailgun.mailgun.</span>Mailgun
+            <span class="apidocSignatureSpan">(apiKey)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mailgun.mailgun.</span>CAMPAIGN_ID</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">mailgun.mailgun.</span>MAILGUN_TAG</span>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -184,6 +215,8 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
+
+
 
 
 
@@ -242,7 +275,24 @@
     }
   };
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+subject: subject,
+body: text
+  });
+  if(options &#x26;&#x26; options !== {})
+body.options = JSON.stringify(options);
+
+  // Prepare our API request.
+  var httpOptions = this.<span class="apidocCodeKeywordSpan">_createHttpOptions</span>(&#x27;messages.txt&#x27;, &#x27;POST&#x27
+;, servername);
+  httpOptions.headers[&#x27;Content-Type&#x27;] = &#x27;application/x-www-form-urlencoded&#x27;;
+  httpOptions.headers[&#x27;Content-Length&#x27;] = Buffer.byteLength(body);
+
+  // Fire the request to Mailgun&#x27;s API.
+  var req = https.request(httpOptions, function(res) {
+
+// If the user supplied a callback, fire it and set `err` to the
+...</pre></li>
     </ul>
 
 
@@ -549,6 +599,35 @@ mg.<span class="apidocCodeKeywordSpan">sendText</span>(&#x27;example@example.com
 });
 ...</pre></li>
     </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.mailgun.mailgun" id="apidoc.module.mailgun.mailgun">module mailgun.mailgun</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.mailgun.mailgun.Mailgun" id="apidoc.element.mailgun.mailgun.Mailgun">
+        function <span class="apidocSignatureSpan">mailgun.mailgun.</span>Mailgun
+        <span class="apidocSignatureSpan">(apiKey)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Mailgun = function (apiKey) {
+
+  // Authentication uses the api key in base64 form, so we cache that
+  // here.
+  this._apiKey64 = new Buffer(&#x27;api:&#x27; + apiKey).toString(&#x27;base64&#x27;);
+
+  this._apiKey = apiKey;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
 
 
 </div>
