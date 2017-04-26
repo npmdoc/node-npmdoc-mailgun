@@ -1,6 +1,6 @@
 # npmdoc-mailgun
 
-#### api documentation for  [mailgun (v0.5.0)](http://github.com/shz/node-mailgun)  [![npm package](https://img.shields.io/npm/v/npmdoc-mailgun.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mailgun) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mailgun.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mailgun)
+#### basic api documentation for  [mailgun (v0.5.0)](http://github.com/shz/node-mailgun)  [![npm package](https://img.shields.io/npm/v/npmdoc-mailgun.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-mailgun) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-mailgun.svg)](https://travis-ci.org/npmdoc/node-npmdoc-mailgun)
 
 #### Mailgun for Node.js
 
@@ -49,7 +49,8 @@
         "type": "git",
         "url": "git+ssh://git@github.com/shz/node-mailgun.git"
     },
-    "version": "0.5.0"
+    "version": "0.5.0",
+    "bin": {}
 }
 ```
 
